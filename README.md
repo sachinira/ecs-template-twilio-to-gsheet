@@ -88,7 +88,7 @@ Select OAuth client Id.
 
 ### Config.toml 
 ### ballerinax/twilio.webhook related configurations 
-twilio_authToken = "<TWILIO_AUTH_TOKEN>"
+twilio_authToken = "<TWILIO_AUTH_TOKEN>"  
 twilio_callbackUrl = "<CALLBACK_URL>"
 
 ### ballerinax/googleapis_sheet related configurations  
@@ -112,4 +112,5 @@ root directory of the integration template.
 
 3. Now you can send new messages in the format `Vote <LANGUAGE_NAME>` to the specific Twilio account and observe that integration template runtime has received the event notification upon receiving new message.
 
-4. You can check the Google Sheet to verify that how the count of each language is increased in the specified sheet. 
+4. You can check the Google Sheet to verify that how the count of each language is increased in the specified sheet.
+ 

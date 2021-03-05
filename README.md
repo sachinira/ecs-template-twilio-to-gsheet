@@ -1,4 +1,4 @@
-# Twilio to Google Sheet - Add data from the SMS to a Google Sheet
+# Template: Twilio data to a Google Sheet
 <div style="text-align:center"><img src="./docs/images/template_flow.png" alt="Twilio-Google Sheet Integration template overview"/></div>
 
 ## Supported Versions
@@ -30,10 +30,10 @@
 </table>
 
 ## Integration Use Case
-This integration template listens to the incoming sms (with a predefined template) and increment a count in a Google 
-Sheet. The practical use case we have implemented here is a scenario where a survey to find out the best language for 
-building micro services out of a set of given languages. The users have to sent a predefined sms in the format of 
-`Vote <Language Name>` to a given Twilio number.
+This integration template listens to the incoming Twilio SMS (with a predefined template) and increments a count in a Google 
+Sheet. This can be used to update specific data in the Google Sheet.  <br>
+The practical use case we have implemented here is a scenario where `A survey to find out the best language for building microservices out of a set of given languages`.
+The users have to send an SMS in the predefined format `Vote <Language Name>` to a given Twilio number. The template will update the count on each valid SMS receive.
 
 ## Pre-requisites
 * Download and install [Ballerina](https://ballerinalang.org/downloads/).
@@ -76,12 +76,13 @@ Select OAuth client Id.
 13. Copy `access token` and `refresh token`. Put it on the config(Config.toml) file.
 
 ## Configuring the Integration Template
-
 1. Create new spreadsheet.
 2. Rename the sheet if you want.
 3. Get the ID of the spreadsheet.  
 ![alt text](docs/images/spreadsheet_id_example.png?raw=true)
-5. Get the work sheet name.
+5. Get the work sheet name and populate the spreadsheet with basic data. <br>Snapshot of an initial spreadsheet 
+populated with basic data and ready for receiving user votes.
+    <div><img src="./docs/images/initial_spreadsheet.png" alt="Initial representation of the spreadsheet"/></div>
 
 6. Once you obtained all configurations, Create `Config.toml` in root directory.
 7. Replace the necessary fields in the `Config.toml` file with your data.
@@ -98,10 +99,6 @@ sheets_refreshToken = "<REFRESH_TOKEN>"
 sheets_clientId = "<CLIENT_ID>"  
 sheets_clientSecret = "<CLIENT_SECRET>"  
 
-
-### Snapshot of an initial spreadsheet populated with basic data and ready for recieving user votes.
-<div><img src="./docs/images/initial_spreadsheet.png" alt="Initial representation of the spreadsheet"/></div>
-
 ## Running the Template
 1. First you need to build the integration template and create the executable binary. Run the following command from the 
 root directory of the integration template. 
@@ -110,7 +107,8 @@ root directory of the integration template.
 2. Then you can run the integration binary with the following command. 
 `$  bal run target/bin/twilio_to_gsheet-0.1.1.jar`. 
 
-3. Now you can send new messages in the format `Vote <LANGUAGE_NAME>` to the specific Twilio account and observe that integration template runtime has received the event notification upon receiving new message.
+3. Now you can send new messages in the format `Vote <LANGUAGE_NAME>` to the specific Twilio account and observe that 
+integration template runtime has received the event notification upon receiving new message.
 
 4. You can check the Google Sheet to verify that how the count of each language is increased in the specified sheet.
  

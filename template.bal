@@ -2,7 +2,6 @@ import ballerina/encoding;
 import ballerina/http;
 import ballerina/lang.'int as ints;
 import ballerina/regex;
-import ballerina/websub;
 import ballerinax/googleapis_sheets as sheets;
 import ballerinax/twilio.webhook;
 
@@ -27,7 +26,6 @@ sheets:SpreadsheetConfiguration spreadsheetConfig = {
 };
 sheets:Client spreadsheetClient = check new (spreadsheetConfig);
 
-@websub:SubscriberServiceConfig {}
 service / on twilioListener {
     resource function post subscriber(http:Caller caller, http:Request request) returns error? {
 
